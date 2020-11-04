@@ -26,8 +26,34 @@ Creatures.prototype.render = function () {
   $creatureClone.attr('class', this.keyword);
   $('main').append($creatureClone);
 }
+function userSelection() {
+  $('select').on('change', function () {
+    const keywordArray = ['narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
+    keywordArray.forEach(newClass => {
+      let classOn = '.' + newClass;
+      $(classOn).show();
+    });
+    let src = $(this).find(':selected').attr('value');
+    keywordArray.forEach(match => {
+      if (src !== match) {
+        let check = '.' + match;
+        $(check).hide();
+      }
+    });
+  })
+
+}
 
 Creatures.allCreatures = [];
+
+// Creatures.prototype.optionRender = function () {
+//   console.log(Creatures.allCreatures);
+//   Creatures.allCreatures.forEach(renderingKey => {
+//     console.log(renderingKey);
+//   });
+
+//   // $('select').append('<option value='this.keyword'>'this.keyword'</option>')
+// }
 
 Creatures.readJson = () => {
   const ajaxSetting = { method: 'get', dataType: 'json' };
@@ -43,9 +69,8 @@ Creatures.readJson = () => {
       // console.log(animals);
       // animals.render();
     });
+  // Creatures.optionRender();
+  userSelection();
 }
 
 $(() => Creatures.readJson());
-
-//create global arry for new creatures
-//then, do animals.render
