@@ -46,6 +46,15 @@ function userSelection() {
 
 Creatures.allCreatures = [];
 
+// Creatures.prototype.optionRender = function () {
+//   console.log(Creatures.allCreatures);
+//   Creatures.allCreatures.forEach(renderingKey => {
+//     console.log(renderingKey);
+//   });
+
+//   // $('select').append('<option value='this.keyword'>'this.keyword'</option>')
+// }
+
 Creatures.readJson = () => {
   const ajaxSetting = { method: 'get', dataType: 'json' };
 
@@ -60,6 +69,7 @@ Creatures.readJson = () => {
       // console.log(animals);
       // animals.render();
     });
+  // Creatures.optionRender();
   userSelection();
 }
 
