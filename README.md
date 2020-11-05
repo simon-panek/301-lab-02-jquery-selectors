@@ -120,9 +120,9 @@ Estimate of time needed to complete: 3 hour
 
 Start time: 5:20pm
 
-Finish time: 
+Finish time: 8:20pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 3 hrs
 
 ### Feature 1: Pagination
 
@@ -144,15 +144,15 @@ Then the other set of images should be dynamically displayed
 
 **TIME**
 
-Number and name of feature: Feature #2(Day2) - 
+Number and name of feature: Feature #2(Day2) - Templating
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 2
 
-Start time: 
+Start time: 8:50pm
 
-Finish time: 
+Finish time: 11:00pm
 
-Actual time needed to complete: 
+Actual time needed to complete: 2 hrs
 
 ### Feature 2: Templating
 

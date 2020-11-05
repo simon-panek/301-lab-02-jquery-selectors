@@ -12,47 +12,54 @@ function Creatures(creature) {
 
 }
 
-// getting template section from HTML, cloning it, and appending to main section
+// getting div section from HTML, cloning it, and appending to main section
 Creatures.prototype.render = function () {
 
-  let $creatureClone = $('<div></div>').clone();
-  $creatureClone.html($('#photo-template').html());
+  if (!keywordArray.includes(this.keyword)) {
+
+    keywordArray.push(this.keyword);
+  }
+  let $template = $('#photo-template').html();
+  console.log($template);
+  // let test = $('div').html()
+
+  let html = Mustache.render($template, this);
+  return html;
+
+  // let $creatureClone = $('<div></div>').clone();
+  // $creatureClone.html($('#photo-div').html());
   // $('main').append($creatureClone);
 
   // getting a cloned element's specific tags and providing text/url
-  $creatureClone.find('h2').text(this.title);
-  $creatureClone.find('img').attr('src', this.image_url);
-  $creatureClone.find('p').text(this.description);
+
+  // $creatureClone.find('h2').text(this.title);
+  // $creatureClone.find('img').attr('src', this.image_url);
+  // $creatureClone.find('p').text(this.description);
 
   //assign a class of "page1"
   //$creatureClone('imag').addClass('page1Class');
 
-  // removing the class to make template render to page
-  $creatureClone.attr('class', this.keyword);
+  // removing the class to make div render to page
 
-  if (classSwitch === 0){
-    $creatureClone.addClass('page1Class'); //added a class to all data from page1.json
-  }
 
-  if (classSwitch === 1){
-    $creatureClone.addClass('page2Class'); //added a class to all data from page1.json
-  }
+  // if (classSwitch === 0){
+  //   $creatureClone.addClass('page1Class'); //added a class to all data from page1.json
+  // }
 
-  $('main').append($creatureClone);
+  // if (classSwitch === 1){
+  //   $creatureClone.addClass('page2Class'); //added a class to all data from page1.json
+  // }
 
-  if(!keywordArray.includes(this.keyword)){
-
-    keywordArray.push(this.keyword);
-  }
+  // $('main').append($creatureClone);
 
 }
 
 function renderOptions() { //creates an option element for each keyword option and appending to the select
 
- 
+
   $('#selectElement').empty();
-  
-  keywordArray.forEach( keywordOption => {
+
+  keywordArray.forEach(keywordOption => {
 
     let optionTag = $(`<option>${keywordOption}</option>`);
 
@@ -100,18 +107,18 @@ Creatures.readJson = () => {
       Creatures.allCreatures.forEach(image => {
         $('main').append(image.render())
       })
-      classSwitch = 0;
+      // classSwitch = 0;
       userSelection();
     });
 
 }
 
-let classSwitch = 0;
+// let classSwitch = 0;
 
 Creatures.page2ReadJson = () => { //bring in data from page2.json
   //clear current pictures
 
-  classSwitch = 1;
+  // classSwitch = 1;
 
   $('.page1Class').hide();
 
@@ -141,9 +148,9 @@ const buttonPage2Listener = () => {
 };
 
 const buttonHomeListener = () => {
-  
+
   $('#homeButton').click(Creatures.readJson);
-  
+
 
 };
 
