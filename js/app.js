@@ -1,6 +1,6 @@
 'use strict';
 
-
+let keywordArray = [];
 
 function Creatures(creature) {
 
@@ -25,15 +25,36 @@ Creatures.prototype.render = function () {
   // removing the class to make template render to page
   $creatureClone.attr('class', this.keyword);
   $('main').append($creatureClone);
+
+  if(!keywordArray.includes(this.keyword)){
+    keywordArray.push(this.keyword);
+  }
 }
+
+function renderOptions() { //creates an option element for each keyword option and appending to the select
+
+  keywordArray.forEach( keywordOption => {
+
+    let optionTag = $(`<option>${keywordOption}</option>`);
+
+    $('#selectElement').append(optionTag);
+
+  })
+
+}
+
 function userSelection() {
+
+  renderOptions();
+
   $('select').on('change', function () {
-    const keywordArray = ['narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
+    // console.log('keywordArray user selection:', keywordArray);
+    // const keywordArray = ['narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
     keywordArray.forEach(newClass => {
       let classOn = '.' + newClass;
       $(classOn).show();
     });
-    let src = $(this).find(':selected').attr('value');
+    let src = $(this).find(':selected').text();
     keywordArray.forEach(match => {
       if (src !== match) {
         let check = '.' + match;
@@ -45,15 +66,6 @@ function userSelection() {
 }
 
 Creatures.allCreatures = [];
-
-// Creatures.prototype.optionRender = function () {
-//   console.log(Creatures.allCreatures);
-//   Creatures.allCreatures.forEach(renderingKey => {
-//     console.log(renderingKey);
-//   });
-
-//   // $('select').append('<option value='this.keyword'>'this.keyword'</option>')
-// }
 
 Creatures.readJson = () => {
   const ajaxSetting = { method: 'get', dataType: 'json' };
@@ -68,9 +80,9 @@ Creatures.readJson = () => {
       })
       // console.log(animals);
       // animals.render();
+      userSelection();
     });
   // Creatures.optionRender();
-  userSelection();
 }
 
 $(() => Creatures.readJson());
