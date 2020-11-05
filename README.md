@@ -1,3 +1,12 @@
+## Authors:
+
+- Mariko Alvarado
+- Simon Panek
+
+## Contributors
+
+- Thanks to TA's: Brai, Chance, & Skyler!
+
 ### Feature #1: Display images
 
 #### Why are we implementing this feature?
@@ -24,9 +33,9 @@ Estimate of time needed to complete: 2 Hours
 
 Start time: 3:30PM
 
-Finish time: _____
+Finish time: 11:30PM
 
-Actual time needed to complete: _____
+Actual time needed to complete: 8hrs
 
 ### Feature #2: Filter images
 
@@ -47,15 +56,15 @@ Then only the images whose keyword matches the option should be displayed
 
 **TIME**
 
-Number and name of feature: ________________________________
+Number and name of feature: Feature #2 - Filter Images
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 2 hours
 
-Start time: _____
+Start time: 2:30pm
 
-Finish time: _____
+Finish time: 4:15pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 1:45 hours
 
 ### Feature #3: Style the application
 
@@ -76,15 +85,15 @@ Then the images should be displayed in rows across the screen
 
 **TIME**
 
-Number and name of feature: ________________________________
+Number and name of feature: Feature #3 - Style the Application
 
-Estimate of time needed to complete: _____
+Estimate of time needed to complete: 1 hour
 
-Start time: _____
+Start time: 4:15pm
 
-Finish time: _____
+Finish time: 4:30pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 15 minutes
 
 ### Stretch Goal: Sort the images
 
