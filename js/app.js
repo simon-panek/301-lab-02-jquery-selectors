@@ -98,7 +98,7 @@ Creatures.readJson = () => {
   const ajaxSetting = { method: 'get', dataType: 'json' };
   Creatures.allCreatures = [];
   keywordArray = [];
-  $.ajax('../data/page-1.json', ajaxSetting)
+  $.ajax('./data/page-1.json', ajaxSetting)
     .then(data => {
       data.forEach(hornInfo => {
         Creatures.allCreatures.push(new Creatures(hornInfo));
@@ -126,7 +126,7 @@ Creatures.page2ReadJson = () => { //bring in data from page2.json
 
   Creatures.allCreatures = [];
   keywordArray = [];
-  $.ajax('../data/page-2.json', ajaxSetting)
+  $.ajax('./data/page-2.json', ajaxSetting)
     .then(data => {
       data.forEach(hornInfoPage2 => {
         Creatures.allCreatures.push(new Creatures(hornInfoPage2));
