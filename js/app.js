@@ -1,6 +1,8 @@
 'use strict';
 
 let keywordArray = [];
+let sortSwitch;
+
 
 function Creatures(creature) {
 
@@ -11,7 +13,6 @@ function Creatures(creature) {
   this.horns = creature.horns;
 
 }
-
 // getting div section from HTML, cloning it, and appending to main section
 Creatures.prototype.render = function () {
 
@@ -20,43 +21,10 @@ Creatures.prototype.render = function () {
     keywordArray.push(this.keyword);
   }
   let $template = $('#photo-template').html();
-  console.log($template);
-  // let test = $('div').html()
-
   let html = Mustache.render($template, this);
   return html;
-
-  // let $creatureClone = $('<div></div>').clone();
-  // $creatureClone.html($('#photo-div').html());
-  // $('main').append($creatureClone);
-
-  // getting a cloned element's specific tags and providing text/url
-
-  // $creatureClone.find('h2').text(this.title);
-  // $creatureClone.find('img').attr('src', this.image_url);
-  // $creatureClone.find('p').text(this.description);
-
-  //assign a class of "page1"
-  //$creatureClone('imag').addClass('page1Class');
-
-  // removing the class to make div render to page
-
-
-  // if (classSwitch === 0){
-  //   $creatureClone.addClass('page1Class'); //added a class to all data from page1.json
-  // }
-
-  // if (classSwitch === 1){
-  //   $creatureClone.addClass('page2Class'); //added a class to all data from page1.json
-  // }
-
-  // $('main').append($creatureClone);
-
 }
-
 function renderOptions() { //creates an option element for each keyword option and appending to the select
-
-
   $('#selectElement').empty();
 
   keywordArray.forEach(keywordOption => {
@@ -66,7 +34,6 @@ function renderOptions() { //creates an option element for each keyword option a
     $('#selectElement').append(optionTag);
 
   })
-
 }
 
 function userSelection() {
@@ -74,8 +41,6 @@ function userSelection() {
   renderOptions();
 
   $('select').on('change', function () {
-    // console.log('keywordArray user selection:', keywordArray);
-    // const keywordArray = ['narwhal', 'rhino', 'unicorn', 'unilego', 'triceratops', 'markhor', 'mouflon', 'addax', 'chameleon', 'lizard', 'dragon']
     keywordArray.forEach(newClass => {
       let classOn = '.' + newClass;
       $(classOn).show();
@@ -100,27 +65,26 @@ Creatures.readJson = () => {
   keywordArray = [];
   $.ajax('./data/page-1.json', ajaxSetting)
     .then(data => {
+
+      let copyData = data;
+      copyData.sort((a, b) => sortSwitch === 'title' ? ((a.title > b.title) ? 1 : -1) : ((a.horns > b.horns) ? 1 : -1));
       data.forEach(hornInfo => {
         Creatures.allCreatures.push(new Creatures(hornInfo));
       });
       $('div').remove();
+
+
+
       Creatures.allCreatures.forEach(image => {
         $('main').append(image.render())
       })
-      // classSwitch = 0;
       userSelection();
     });
 
 }
 
-// let classSwitch = 0;
-
 Creatures.page2ReadJson = () => { //bring in data from page2.json
-  //clear current pictures
 
-  // classSwitch = 1;
-
-  // $('.page1Class').hide();
 
   const ajaxSetting = { method: 'get', dataType: 'json' };
 
@@ -128,10 +92,17 @@ Creatures.page2ReadJson = () => { //bring in data from page2.json
   keywordArray = [];
   $.ajax('./data/page-2.json', ajaxSetting)
     .then(data => {
+
+      let copyData = data;
+      copyData.sort((a, b) => sortSwitch === 'title' ? ((a.title > b.title) ? 1 : -1) : ((a.horns > b.horns) ? 1 : -1));
+
       data.forEach(hornInfoPage2 => {
+
         Creatures.allCreatures.push(new Creatures(hornInfoPage2));
       });
+
       $('div').remove();
+
       Creatures.allCreatures.forEach(image => {
         $('main').append(image.render())
       })
@@ -140,20 +111,33 @@ Creatures.page2ReadJson = () => { //bring in data from page2.json
     });
 }
 
-//click function that calls Creatures.page2ReadJson();
-
 const buttonPage2Listener = () => {
   $('#page2').click(Creatures.page2ReadJson);
-
 };
 
 const buttonHomeListener = () => {
 
   $('#homeButton').click(Creatures.readJson);
-
-
 };
 
+const whichClick = () => {
+
+  let checkRadio = $('input[name="sort"]:checked').val();
+
+  if (checkRadio === 'alpha') {
+    sortSwitch = 'title';
+  } else {
+    sortSwitch = 'horns';
+
+  }
+}
+
+const sortListener = () => {
+
+  $('#sortUl').click(whichClick);
+
+};
+sortListener();
 buttonPage2Listener();
 buttonHomeListener();
 
