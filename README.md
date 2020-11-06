@@ -5,7 +5,7 @@
 
 ## Contributors
 
-- Thanks to TA's: Brai, Chance, & Skyler!
+- Thanks to TA's: Brai, Chance, Skyler & NICCO!
 
 ### Feature #1: Display images
 
@@ -203,15 +203,15 @@ Then the images should be displayed in columns, as screen width allows
 
 **TIME**
 
-Number and name of feature: Feature #4 (Day2) - 
+Number and name of feature: Feature #4 (Day2) - Sort Images
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 30min
 
-Start time: 
+Start time: 5:30 PM
 
-Finish time: 
+Finish time: 8:15 PM
 
-Actual time needed to complete: 
+Actual time needed to complete: 2:45 
 
 ### Feature 4: Sort the images
 
