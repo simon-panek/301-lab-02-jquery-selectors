@@ -103,7 +103,7 @@ Creatures.readJson = () => {
       data.forEach(hornInfo => {
         Creatures.allCreatures.push(new Creatures(hornInfo));
       });
-      $('div').empty();
+      $('div').remove();
       Creatures.allCreatures.forEach(image => {
         $('main').append(image.render())
       })
@@ -120,7 +120,7 @@ Creatures.page2ReadJson = () => { //bring in data from page2.json
 
   // classSwitch = 1;
 
-  $('.page1Class').hide();
+  // $('.page1Class').hide();
 
   const ajaxSetting = { method: 'get', dataType: 'json' };
 
@@ -131,7 +131,7 @@ Creatures.page2ReadJson = () => { //bring in data from page2.json
       data.forEach(hornInfoPage2 => {
         Creatures.allCreatures.push(new Creatures(hornInfoPage2));
       });
-      $('div').empty();
+      $('div').remove();
       Creatures.allCreatures.forEach(image => {
         $('main').append(image.render())
       })
