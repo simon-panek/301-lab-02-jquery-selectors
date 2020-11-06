@@ -9,11 +9,29 @@ header {
 }
 
 main {
-  padding-left: 12.5%;
-  padding-right: 12.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 footer {
   clear: both;
   text-align: center;
+}
+
+
+ul{
+  display: flex;
+  justify-content: center;
+ 
+}
+
+li{
+
+  margin: 10px;
+
+}
+
+button{
+  width: 120px;
 }

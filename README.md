@@ -174,15 +174,15 @@ Then each image should be rendered according to a template
 
 **TIME**
 
-Number and name of feature: Feature #3 (Day2) - 
+Number and name of feature: Feature #3 (Day2) -Styling With Flexbox 
 
-Estimate of time needed to complete: 
+Estimate of time needed to complete: 1hr
 
-Start time: 
+Start time: 4:50 PM
 
-Finish time: 
+Finish time: 5:15 PM
 
-Actual time needed to complete: 
+Actual time needed to complete: 25 mins
 
 ### Feature 3: Styling with Flexbox
 
